@@ -7,11 +7,11 @@ using namespace std;
 template<typename T>
 class Stack {
 private:
-	int max=1;
-	T items[max];
+	int max;
+	T* items;
 	int top;
 public:
-	Stack(int);
+	Stack(int s);
 	bool isempty();
 	bool isfull();
 	bool push(const T& item); // odk³ada element na stos
@@ -20,7 +20,9 @@ public:
 };
 
 template<typename T>
-Stack<T>::Stack(int size) : max(size);
+Stack<T>::Stack(int size) : max(size), top(0) {
+	items = new T[max];
+};
 
 template<typename T>
 bool Stack<T>::isempty() {
@@ -35,7 +37,6 @@ template<typename T>
 bool Stack<T>::isfull() {
 	return(top == max);
 }
-
 
 template <typename T>
 bool Stack<T>::push(const T& item)
