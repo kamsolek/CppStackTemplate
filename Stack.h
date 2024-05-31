@@ -14,7 +14,7 @@ public:
 	Stack(int s);
 	bool isempty();
 	bool isfull();
-	bool push(const T& item); // odk³ada element na stos
+	void push(const T& item); // odk³ada element na stos
 	T pop();
 
 };
@@ -39,21 +39,21 @@ bool Stack<T>::isfull() {
 }
 
 template <typename T>
-bool Stack<T>::push(const T& item)
+void Stack<T>::push(const T& item)
 {
-	if (top < max)
+	if (top == max)
 	{
-		items[top++] = item;
-		return true;
+		throw length_error("Stack overflow.\n");
 	}
-	else return false;
+	items[top++] = item;
 };
 
 template<typename T>
 T Stack<T>::pop() {
-	if (top > 0) {
-		return items[--top];
+	if (top <= 0) {
+		throw out_of_range("Attempting to pop from an empty stack.\n");
 	}
+	return items[--top];
 }
 
 #endif
