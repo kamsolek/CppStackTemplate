@@ -2,9 +2,11 @@
 //
 
 #include <iostream>
+#include "Stack.h"
 
 int main()
 {
+    Stack<int>stackInt(5);
     std::cout << "Hello World!\n";
 }
 
